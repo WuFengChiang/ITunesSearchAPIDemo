@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BD28D1CA2310009F00ABC0E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28D1C92310009F00ABC0E6 /* AppDelegate.swift */; };
-		BD28D1CC2310009F00ABC0E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28D1CB2310009F00ABC0E6 /* ViewController.swift */; };
+		BD28D1CC2310009F00ABC0E6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28D1CB2310009F00ABC0E6 /* MainViewController.swift */; };
 		BD28D1CF2310009F00ABC0E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD28D1CD2310009F00ABC0E6 /* Main.storyboard */; };
 		BD28D1D22310009F00ABC0E6 /* M800Assignment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BD28D1D02310009F00ABC0E6 /* M800Assignment.xcdatamodeld */; };
 		BD28D1D4231000A000ABC0E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD28D1D3231000A000ABC0E6 /* Assets.xcassets */; };
@@ -31,7 +31,7 @@
 /* Begin PBXFileReference section */
 		BD28D1C62310009F00ABC0E6 /* M800Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = M800Assignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD28D1C92310009F00ABC0E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BD28D1CB2310009F00ABC0E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BD28D1CB2310009F00ABC0E6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BD28D1CE2310009F00ABC0E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BD28D1D12310009F00ABC0E6 /* M800Assignment.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = M800Assignment.xcdatamodel; sourceTree = "<group>"; };
 		BD28D1D3231000A000ABC0E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,7 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				BD28D1C92310009F00ABC0E6 /* AppDelegate.swift */,
-				BD28D1CB2310009F00ABC0E6 /* ViewController.swift */,
+				BD28D1CB2310009F00ABC0E6 /* MainViewController.swift */,
 				BD28D1CD2310009F00ABC0E6 /* Main.storyboard */,
 				BD28D1D3231000A000ABC0E6 /* Assets.xcassets */,
 				BD28D1D5231000A000ABC0E6 /* LaunchScreen.storyboard */,
@@ -204,7 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD28D1CC2310009F00ABC0E6 /* ViewController.swift in Sources */,
+				BD28D1CC2310009F00ABC0E6 /* MainViewController.swift in Sources */,
 				BD28D1D22310009F00ABC0E6 /* M800Assignment.xcdatamodeld in Sources */,
 				BD28D1EF231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift in Sources */,
 				BD28D1CA2310009F00ABC0E6 /* AppDelegate.swift in Sources */,
