@@ -9,13 +9,13 @@
 import XCTest
 @testable import M800Assignment
 
-func urlComponnetsForITunesSearchAPI(queryItems: [URLQueryItem]) -> URLComponents {
+func urlForITunesSearchAPI(queryItems: [URLQueryItem]) -> URL {
     var urlComponents = URLComponents()
     urlComponents.scheme = "https"
     urlComponents.host = "itunes.apple.com"
     urlComponents.path = "/search"
     urlComponents.queryItems = queryItems
-    return urlComponents
+    return urlComponents.url!
 }
 
 class M800AssignmentTests: XCTestCase {
@@ -27,11 +27,9 @@ class M800AssignmentTests: XCTestCase {
             URLQueryItem(name: "media", value: "music"),
             URLQueryItem(name: "country", value: "tw")
         ]
-        
-        let urlComponents = urlComponnetsForITunesSearchAPI(queryItems: queryItems)
-        
+
         do {
-            let responseData = try Data(contentsOf: urlComponents.url!)
+            let responseData = try Data(contentsOf: urlForITunesSearchAPI(queryItems: queryItems))
             let responseJSONObject = try JSONSerialization.jsonObject(
                 with: responseData,
                 options: .allowFragments) as! Dictionary<String, AnyObject>
