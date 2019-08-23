@@ -86,11 +86,32 @@ extension MainViewController: UISearchBarDelegate {
 // MARK: - TableView
 
 extension MainViewController: UITableViewDelegate {
+    
+    // MARK: - implement methods
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let CELL_ID = "SONG_CELL"
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath)
         cell.textLabel?.text = songs[indexPath.row].trackName
         cell.detailTextLabel?.text = songs[indexPath.row].artistName
+    
+        return cellWhichWasloadedArtworkImage(cell: cell, indexPath: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        if let prviewURL = URL(string: songs[indexPath.row].previewURLString) {
+            let urlAsset = AVURLAsset(url: prviewURL)
+            let playerItem = AVPlayerItem(asset: urlAsset)
+            audioPlayer = AVPlayer(playerItem: playerItem)
+            audioPlayer!.play()
+        }
+    }
+    
+    // MARK: - Task methods
+    
+    func cellWhichWasloadedArtworkImage(cell: UITableViewCell, indexPath: IndexPath) -> UITableViewCell {
         
         if cell.imageView?.image == nil {
             cell.imageView?.image = UIImage(named: "default_track_image")
@@ -113,19 +134,7 @@ extension MainViewController: UITableViewDelegate {
                 print(error.localizedDescription)
             }
         }
-        
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-
-        if let prviewURL = URL(string: songs[indexPath.row].previewURLString) {
-            let urlAsset = AVURLAsset(url: prviewURL)
-            let playerItem = AVPlayerItem(asset: urlAsset)
-            audioPlayer = AVPlayer(playerItem: playerItem)
-            audioPlayer!.play()
-        }
     }
 }
 
