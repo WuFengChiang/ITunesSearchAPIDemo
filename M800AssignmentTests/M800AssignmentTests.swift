@@ -11,23 +11,35 @@ import XCTest
 
 class M800AssignmentTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testSearchAPI() {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "itunes.apple.com"
+        urlComponents.path = "/search"
+        urlComponents.queryItems = [
+            URLQueryItem(name: "term", value: "張雨生 我的未來不是夢"),
+            URLQueryItem(name: "media", value: "music"),
+            URLQueryItem(name: "country", value: "tw")
+        ]
+        do {
+            let responseData = try Data(contentsOf: urlComponents.url!)
+            let responseJSONObject = try JSONSerialization.jsonObject(
+                with: responseData,
+                options: .allowFragments) as! Dictionary<String, AnyObject>
+            for item in responseJSONObject {
+                if item.key == "results" {
+                    let valueOfResultsItem = item.value as! Array<Dictionary<String, AnyObject>>
+                    XCTAssertTrue(valueOfResultsItem.count == 1)
+                    
+                    for aSong in valueOfResultsItem {
+                        XCTAssertEqual(aSong["artistName"] as! String, "張雨生")
+                        XCTAssertEqual(aSong["trackName"] as! String, "我的未來不是夢")
+                    }
+                }
+            }
+            
+        } catch {
+            print(error.localizedDescription)
         }
     }
 
