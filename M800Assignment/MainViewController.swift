@@ -47,18 +47,31 @@ class MainViewController: UIViewController {
     }
 }
 
-// MARK: SearchBar
+// MARK: - SearchBar
 
 extension MainViewController: UISearchBarDelegate {
+    
+    // MARK: Delegate implements
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        triggerSeach(searchBar)
+        unfocuseSearchBar(searchBar)
+    }
+    
+    // MARK: Task methods
+    
+    fileprivate func triggerSeach(_ searchBar: UISearchBar) {
         if let inputText = searchBar.text {
             ITunesSearchAPIHelper().search(term: inputText, handler: loadSongData(_:))
         }
+    }
+    
+    fileprivate func unfocuseSearchBar(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
     }
 }
 
-// MARK: TableView
+// MARK: - TableView
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
