@@ -67,12 +67,19 @@ extension MainViewController: UITableViewDelegate {
         cell.textLabel?.text = songs[indexPath.row].trackName
         cell.detailTextLabel?.text = songs[indexPath.row].artistName
         
-        do {
-            let imageData = try Data(contentsOf: URL(string: songs[indexPath.row].artworkURLString)!)
-            cell.imageView?.image = UIImage(data: imageData)
-        } catch {
-            print(error.localizedDescription)
+        DispatchQueue.global().async {
+            do {
+                let imageData = try Data(contentsOf: URL(string: self.songs[indexPath.row].artworkURLString)!)
+                
+                DispatchQueue.main.async {
+                    cell.imageView?.image = UIImage(data: imageData)
+                }
+                
+            } catch {
+                print(error.localizedDescription)
+            }
         }
+        
         return cell
     }
     
