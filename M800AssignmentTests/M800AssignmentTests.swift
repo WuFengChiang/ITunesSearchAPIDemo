@@ -18,18 +18,20 @@ func urlForITunesSearchAPI(queryItems: [URLQueryItem]) -> URL {
     return urlComponents.url!
 }
 
+func queryItemsForITunesSearchAPI(term: String) -> [URLQueryItem] {
+    return [
+        URLQueryItem(name: "term", value: term),
+        URLQueryItem(name: "media", value: "music"),
+        URLQueryItem(name: "country", value: "tw")
+    ]
+}
+
 class M800AssignmentTests: XCTestCase {
 
     func testSearchAPI() {
         
-        let queryItems = [
-            URLQueryItem(name: "term", value: "張雨生 我的未來不是夢"),
-            URLQueryItem(name: "media", value: "music"),
-            URLQueryItem(name: "country", value: "tw")
-        ]
-
         do {
-            let responseData = try Data(contentsOf: urlForITunesSearchAPI(queryItems: queryItems))
+            let responseData = try Data(contentsOf: urlForITunesSearchAPI(queryItems:  queryItemsForITunesSearchAPI(term: "張雨生 我的未來不是夢")))
             let responseJSONObject = try JSONSerialization.jsonObject(
                 with: responseData,
                 options: .allowFragments) as! Dictionary<String, AnyObject>
