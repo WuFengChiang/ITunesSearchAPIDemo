@@ -30,9 +30,18 @@ class MainViewController: UIViewController {
         }
     }
     
+    // MARK: - Life cycle methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        addDefaultMessageToFirstRowWhenSongDataIsEmpty()
+    }
+    
+    // MARK: - Task methods
+    
+    private func addDefaultMessageToFirstRowWhenSongDataIsEmpty() {
+        let emptySong = Song(trackName: "無任何歌曲資訊", artistName: "請執行搜尋", previewURLString: "", artworkURLString: "")
+        songs.append(emptySong)
     }
     
     private func loadSongData(_ valueOfResultsItem: [[String : AnyObject]]) {
@@ -79,6 +88,10 @@ extension MainViewController: UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath)
         cell.textLabel?.text = songs[indexPath.row].trackName
         cell.detailTextLabel?.text = songs[indexPath.row].artistName
+        
+        guard self.songs[indexPath.row].artworkURLString != "" else {
+            return cell
+        }
         
         DispatchQueue.global().async {
             do {
