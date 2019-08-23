@@ -10,7 +10,7 @@ import UIKit
 
 class ITunesSearchAPIHelper: NSObject {
     
-    public static func urlForITunesSearchAPI(queryItems: [URLQueryItem]) -> URL {
+    public static func url(queryItems: [URLQueryItem]) -> URL {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = "itunes.apple.com"
@@ -19,7 +19,7 @@ class ITunesSearchAPIHelper: NSObject {
         return urlComponents.url!
     }
     
-    public static func queryItemsForITunesSearchAPI(term: String) -> [URLQueryItem] {
+    public static func queryItems(term: String) -> [URLQueryItem] {
         return [
             URLQueryItem(name: "term", value: term),
             URLQueryItem(name: "media", value: "music"),

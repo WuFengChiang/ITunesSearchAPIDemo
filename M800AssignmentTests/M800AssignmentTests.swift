@@ -14,7 +14,7 @@ class M800AssignmentTests: XCTestCase {
     func testSearchAPI() {
         
         do {
-            let responseData = try Data(contentsOf: ITunesSearchAPIHelper.urlForITunesSearchAPI(queryItems:  ITunesSearchAPIHelper.queryItemsForITunesSearchAPI(term: "張雨生 我的未來不是夢")))
+            let responseData = try Data(contentsOf: ITunesSearchAPIHelper.url(queryItems:  ITunesSearchAPIHelper.queryItems(term: "張雨生 我的未來不是夢")))
             let responseJSONObject = try JSONSerialization.jsonObject(
                 with: responseData,
                 options: .allowFragments) as! Dictionary<String, AnyObject>
