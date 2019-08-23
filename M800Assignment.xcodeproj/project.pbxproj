@@ -15,6 +15,7 @@
 		BD28D1D7231000A000ABC0E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD28D1D5231000A000ABC0E6 /* LaunchScreen.storyboard */; };
 		BD28D1E2231000A000ABC0E6 /* M800AssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28D1E1231000A000ABC0E6 /* M800AssignmentTests.swift */; };
 		BD28D1EF231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28D1EE231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift */; };
+		BD28D1F02310190600ABC0E6 /* ITunesSearchAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28D1EE231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD28D1F02310190600ABC0E6 /* ITunesSearchAPIHelper.swift in Sources */,
 				BD28D1E2231000A000ABC0E6 /* M800AssignmentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,7 @@
 //
 
 import XCTest
+
 @testable import M800Assignment
 
 class M800AssignmentTests: XCTestCase {
@@ -22,24 +23,8 @@ class M800AssignmentTests: XCTestCase {
         }
     }
     
-    fileprivate func search(handler: (Array<Dictionary<String, AnyObject>>) -> Void) {
-        do {
-            let responseData = try Data(contentsOf: ITunesSearchAPIHelper.url(queryItems: ITunesSearchAPIHelper.queryItems(term: termString)))
-            let responseJSONObject = try JSONSerialization.jsonObject(
-                with: responseData,
-                options: .allowFragments) as! Dictionary<String, AnyObject>
-            for item in responseJSONObject {
-                if item.key == "results" {
-                    handler(item.value as! Array<Dictionary<String, AnyObject>>)
-                }
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
     func testSearchAPI() {
-        search(handler: doTest(_:))
+        ITunesSearchAPIHelper().search(term: termString, handler: doTest(_:))
     }
 
 }
