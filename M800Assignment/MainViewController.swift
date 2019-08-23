@@ -52,6 +52,9 @@ class MainViewController: UIViewController {
                                    previewURLString: aSong["previewUrl"] as! String,
                                    artworkURLString: aSong["artworkUrl60"] as! String))
         }
+        if self.songs.count == 0 {
+            addDefaultMessageToFirstRowWhenSongDataIsEmpty()
+        }
         self.musicTableView.reloadData()
     }
 }
@@ -89,7 +92,12 @@ extension MainViewController: UITableViewDelegate {
         cell.textLabel?.text = songs[indexPath.row].trackName
         cell.detailTextLabel?.text = songs[indexPath.row].artistName
         
+        if cell.imageView?.image == nil {
+            cell.imageView?.image = UIImage(named: "default_track_image")
+        }
+        
         guard self.songs[indexPath.row].artworkURLString != "" else {
+            cell.imageView?.image = nil
             return cell
         }
         
