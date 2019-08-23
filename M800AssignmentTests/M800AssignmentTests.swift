@@ -9,6 +9,15 @@
 import XCTest
 @testable import M800Assignment
 
+func urlComponnetsForITunesSearchAPI(queryItems: [URLQueryItem]) -> URLComponents {
+    var urlComponents = URLComponents()
+    urlComponents.scheme = "https"
+    urlComponents.host = "itunes.apple.com"
+    urlComponents.path = "/search"
+    urlComponents.queryItems = queryItems
+    return urlComponents
+}
+
 class M800AssignmentTests: XCTestCase {
 
     func testSearchAPI() {
@@ -19,11 +28,7 @@ class M800AssignmentTests: XCTestCase {
             URLQueryItem(name: "country", value: "tw")
         ]
         
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "itunes.apple.com"
-        urlComponents.path = "/search"
-        urlComponents.queryItems = queryItems
+        let urlComponents = urlComponnetsForITunesSearchAPI(queryItems: queryItems)
         
         do {
             let responseData = try Data(contentsOf: urlComponents.url!)
