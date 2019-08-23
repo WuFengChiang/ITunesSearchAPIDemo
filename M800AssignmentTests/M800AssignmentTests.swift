@@ -22,7 +22,7 @@ class M800AssignmentTests: XCTestCase {
         }
     }
     
-    func testSearchAPI() {
+    fileprivate func search(handler: (Array<Dictionary<String, AnyObject>>) -> Void) {
         do {
             let responseData = try Data(contentsOf: ITunesSearchAPIHelper.url(queryItems: ITunesSearchAPIHelper.queryItems(term: termString)))
             let responseJSONObject = try JSONSerialization.jsonObject(
@@ -30,13 +30,16 @@ class M800AssignmentTests: XCTestCase {
                 options: .allowFragments) as! Dictionary<String, AnyObject>
             for item in responseJSONObject {
                 if item.key == "results" {
-                    let valueOfResultsItem = item.value as! Array<Dictionary<String, AnyObject>>
-                    doTest(valueOfResultsItem)
+                    handler(item.value as! Array<Dictionary<String, AnyObject>>)
                 }
             }
         } catch {
             print(error.localizedDescription)
         }
+    }
+    
+    func testSearchAPI() {
+        search(handler: doTest(_:))
     }
 
 }
