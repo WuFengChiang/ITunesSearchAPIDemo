@@ -83,11 +83,11 @@ extension MainViewController: UISearchBarDelegate {
     }
 }
 
-// MARK: - TableView
+// MARK: - TableView UITableViewDelegate Implement
 
 extension MainViewController: UITableViewDelegate {
     
-    // MARK: - implement methods
+    // MARK: implement methods
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let CELL_ID = "SONG_CELL"
@@ -109,7 +109,7 @@ extension MainViewController: UITableViewDelegate {
         }
     }
     
-    // MARK: - Task methods
+    // MARK: Task methods
     
     func cellWhichWasloadedArtworkImage(cell: UITableViewCell, indexPath: IndexPath) -> UITableViewCell {
         
@@ -138,6 +138,8 @@ extension MainViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - TableView UITableViewDataSource Implement
+
 extension MainViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -147,6 +149,8 @@ extension MainViewController: UITableViewDataSource {
         return songs.count
     }
 }
+
+// MARK: - Models
 
 struct Song {
     var trackName: String
