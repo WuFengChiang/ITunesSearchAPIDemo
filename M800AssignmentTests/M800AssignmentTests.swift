@@ -12,15 +12,19 @@ import XCTest
 class M800AssignmentTests: XCTestCase {
 
     func testSearchAPI() {
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "itunes.apple.com"
-        urlComponents.path = "/search"
-        urlComponents.queryItems = [
+        
+        let queryItems = [
             URLQueryItem(name: "term", value: "張雨生 我的未來不是夢"),
             URLQueryItem(name: "media", value: "music"),
             URLQueryItem(name: "country", value: "tw")
         ]
+        
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "itunes.apple.com"
+        urlComponents.path = "/search"
+        urlComponents.queryItems = queryItems
+        
         do {
             let responseData = try Data(contentsOf: urlComponents.url!)
             let responseJSONObject = try JSONSerialization.jsonObject(
