@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class MainViewController: UIViewController {
 
     var songs: [Song] = [Song]()
+    var audioPlayer: AVPlayer?
     
     @IBOutlet weak var musicSearchBar: UISearchBar! {
         didSet {
@@ -34,11 +36,12 @@ class MainViewController: UIViewController {
     }
     
     private func loadSongData(_ valueOfResultsItem: [[String : AnyObject]]) {
+        self.songs = [Song]()
         for aSong in valueOfResultsItem {
             self.songs.append(Song(trackName: aSong["trackName"] as! String,
                                    artistName: aSong["artistName"] as! String,
-                                   previewURL: aSong["previewUrl"] as! String,
-                                   artworkURL: aSong["artworkUrl60"] as! String))
+                                   previewURLString: aSong["previewUrl"] as! String,
+                                   artworkURLString: aSong["artworkUrl60"] as! String))
         }
         self.musicTableView.reloadData()
     }
@@ -65,12 +68,23 @@ extension MainViewController: UITableViewDelegate {
         cell.detailTextLabel?.text = songs[indexPath.row].artistName
         
         do {
-            let imageData = try Data(contentsOf: URL(string: songs[indexPath.row].artworkURL)!)
+            let imageData = try Data(contentsOf: URL(string: songs[indexPath.row].artworkURLString)!)
             cell.imageView?.image = UIImage(data: imageData)
         } catch {
             print(error.localizedDescription)
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        if let prviewURL = URL(string: songs[indexPath.row].previewURLString) {
+            let urlAsset = AVURLAsset(url: prviewURL)
+            let playerItem = AVPlayerItem(asset: urlAsset)
+            audioPlayer = AVPlayer(playerItem: playerItem)
+            audioPlayer!.play()
+        }
     }
 }
 
@@ -87,6 +101,6 @@ extension MainViewController: UITableViewDataSource {
 struct Song {
     var trackName: String
     var artistName: String
-    var previewURL: String
-    var artworkURL: String
+    var previewURLString: String
+    var artworkURLString: String
 }
