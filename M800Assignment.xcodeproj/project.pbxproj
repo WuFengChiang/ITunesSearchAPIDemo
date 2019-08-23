@@ -14,6 +14,7 @@
 		BD28D1D4231000A000ABC0E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD28D1D3231000A000ABC0E6 /* Assets.xcassets */; };
 		BD28D1D7231000A000ABC0E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD28D1D5231000A000ABC0E6 /* LaunchScreen.storyboard */; };
 		BD28D1E2231000A000ABC0E6 /* M800AssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28D1E1231000A000ABC0E6 /* M800AssignmentTests.swift */; };
+		BD28D1EF231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28D1EE231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		BD28D1DD231000A000ABC0E6 /* M800AssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = M800AssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD28D1E1231000A000ABC0E6 /* M800AssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M800AssignmentTests.swift; sourceTree = "<group>"; };
 		BD28D1E3231000A000ABC0E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD28D1EE231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesSearchAPIHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				BD28D1D5231000A000ABC0E6 /* LaunchScreen.storyboard */,
 				BD28D1D8231000A000ABC0E6 /* Info.plist */,
 				BD28D1D02310009F00ABC0E6 /* M800Assignment.xcdatamodeld */,
+				BD28D1EE231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift */,
 			);
 			path = M800Assignment;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			files = (
 				BD28D1CC2310009F00ABC0E6 /* ViewController.swift in Sources */,
 				BD28D1D22310009F00ABC0E6 /* M800Assignment.xcdatamodeld in Sources */,
+				BD28D1EF231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift in Sources */,
 				BD28D1CA2310009F00ABC0E6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
