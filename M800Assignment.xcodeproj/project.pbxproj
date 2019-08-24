@@ -85,14 +85,14 @@
 			isa = PBXGroup;
 			children = (
 				BD28D1C92310009F00ABC0E6 /* AppDelegate.swift */,
-				BD28D1CB2310009F00ABC0E6 /* MainViewController.swift */,
-				BD28D1F12310E0C900ABC0E6 /* MainViewControllerManager.swift */,
+				BD28D1F42311611600ABC0E6 /* view */,
+				BD28D1F52311612000ABC0E6 /* manager */,
+				BD28D1F62311614600ABC0E6 /* model */,
+				BD28D1F3231160DD00ABC0E6 /* helper */,
 				BD28D1CD2310009F00ABC0E6 /* Main.storyboard */,
-				BD28D1D3231000A000ABC0E6 /* Assets.xcassets */,
 				BD28D1D5231000A000ABC0E6 /* LaunchScreen.storyboard */,
+				BD28D1D3231000A000ABC0E6 /* Assets.xcassets */,
 				BD28D1D8231000A000ABC0E6 /* Info.plist */,
-				BD28D1D02310009F00ABC0E6 /* M800Assignment.xcdatamodeld */,
-				BD28D1EE231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift */,
 			);
 			path = M800Assignment;
 			sourceTree = "<group>";
@@ -104,6 +104,38 @@
 				BD28D1E3231000A000ABC0E6 /* Info.plist */,
 			);
 			path = M800AssignmentTests;
+			sourceTree = "<group>";
+		};
+		BD28D1F3231160DD00ABC0E6 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				BD28D1EE231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift */,
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
+		BD28D1F42311611600ABC0E6 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				BD28D1CB2310009F00ABC0E6 /* MainViewController.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		BD28D1F52311612000ABC0E6 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				BD28D1F12310E0C900ABC0E6 /* MainViewControllerManager.swift */,
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
+		BD28D1F62311614600ABC0E6 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				BD28D1D02310009F00ABC0E6 /* M800Assignment.xcdatamodeld */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
