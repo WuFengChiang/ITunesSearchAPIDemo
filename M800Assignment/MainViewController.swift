@@ -71,15 +71,6 @@ extension MainViewController: UITableViewDelegate {
         return cellWhichWasloadedArtworkImage(cell: cell, indexPath: indexPath)
     }
     
-//    fileprivate func playPreviewTrack(_ indexPath: IndexPath) {
-//        if let prviewURL = URL(string: self.delegate!.songs[indexPath.row].previewURLString) {
-//            let urlAsset = AVURLAsset(url: prviewURL)
-//            let playerItem = AVPlayerItem(asset: urlAsset)
-//            audioPlayer = AVPlayer(playerItem: playerItem)
-//            audioPlayer!.play()
-//        }
-//    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         self.delegate!.playPreviewTrack(indexPath)
