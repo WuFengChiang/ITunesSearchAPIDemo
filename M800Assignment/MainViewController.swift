@@ -9,10 +9,16 @@
 import UIKit
 import MediaPlayer
 
+protocol MainViewControllerDelegate {
+    var songs: [Song] {get set}
+    func handleViewDidLoad()
+    func doSearch(_ searchBar: UISearchBar)
+}
+
 class MainViewController: UIViewController {
 
-    var songs: [Song] = [Song]()
     var audioPlayer: AVPlayer?
+    var delegate: MainViewControllerDelegate?
     
     @IBOutlet weak var musicSearchBar: UISearchBar! {
         didSet {
@@ -34,28 +40,9 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addDefaultMessageToFirstRowWhenSongDataIsEmpty()
-    }
-    
-    // MARK: - Task methods
-    
-    private func addDefaultMessageToFirstRowWhenSongDataIsEmpty() {
-        let emptySong = Song(trackName: "無任何歌曲資訊", artistName: "請執行搜尋", previewURLString: "", artworkURLString: "")
-        songs.append(emptySong)
-    }
-    
-    private func loadSongData(_ valueOfResultsItem: [[String : AnyObject]]) {
-        self.songs = [Song]()
-        for aSong in valueOfResultsItem {
-            self.songs.append(Song(trackName: aSong["trackName"] as! String,
-                                   artistName: aSong["artistName"] as! String,
-                                   previewURLString: aSong["previewUrl"] as! String,
-                                   artworkURLString: aSong["artworkUrl60"] as! String))
-        }
-        if self.songs.count == 0 {
-            addDefaultMessageToFirstRowWhenSongDataIsEmpty()
-        }
-        self.musicTableView.reloadData()
+        
+        self.delegate = MainViewControllerManager(musicTableView: self.musicTableView)
+        self.delegate?.handleViewDidLoad()
     }
 }
 
@@ -66,24 +53,7 @@ extension MainViewController: UISearchBarDelegate {
     // MARK: Delegate implements
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        doSearch(searchBar)
-    }
-    
-    // MARK: Task methods
-    
-    fileprivate func doSearch(_ searchBar: UISearchBar) {
-        triggerSeach(searchBar)
-        unfocuseSearchBar(searchBar)
-    }
-    
-    fileprivate func triggerSeach(_ searchBar: UISearchBar) {
-        if let inputText = searchBar.text {
-            ITunesSearchAPIHelper().search(term: inputText, handler: loadSongData(_:))
-        }
-    }
-    
-    fileprivate func unfocuseSearchBar(_ searchBar: UISearchBar) {
-        searchBar.endEditing(true)
+        self.delegate?.doSearch(searchBar)
     }
 }
 
@@ -96,8 +66,8 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let CELL_ID = "SONG_CELL"
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath)
-        cell.textLabel?.text = songs[indexPath.row].trackName
-        cell.detailTextLabel?.text = songs[indexPath.row].artistName
+        cell.textLabel?.text = self.delegate!.songs[indexPath.row].trackName
+        cell.detailTextLabel?.text = self.delegate!.songs[indexPath.row].artistName
     
         return cellWhichWasloadedArtworkImage(cell: cell, indexPath: indexPath)
     }
@@ -105,7 +75,7 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        if let prviewURL = URL(string: songs[indexPath.row].previewURLString) {
+        if let prviewURL = URL(string: self.delegate!.songs[indexPath.row].previewURLString) {
             let urlAsset = AVURLAsset(url: prviewURL)
             let playerItem = AVPlayerItem(asset: urlAsset)
             audioPlayer = AVPlayer(playerItem: playerItem)
@@ -121,14 +91,14 @@ extension MainViewController: UITableViewDelegate {
             cell.imageView?.image = UIImage(named: "default_track_image")
         }
         
-        guard self.songs[indexPath.row].artworkURLString != "" else {
+        guard self.delegate!.songs[indexPath.row].artworkURLString != "" else {
             cell.imageView?.image = nil
             return cell
         }
         
         DispatchQueue.global().async {
             do {
-                let imageData = try Data(contentsOf: URL(string: self.songs[indexPath.row].artworkURLString)!)
+                let imageData = try Data(contentsOf: URL(string: self.delegate!.songs[indexPath.row].artworkURLString)!)
                 
                 DispatchQueue.main.async {
                     cell.imageView?.image = UIImage(data: imageData)
@@ -150,11 +120,11 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songs.count
+        return self.delegate!.songs.count
     }
 }
 
-// MARK: - Models
+// MARK: - View Models
 
 struct Song {
     var trackName: String

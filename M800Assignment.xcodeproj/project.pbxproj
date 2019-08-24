@@ -16,6 +16,7 @@
 		BD28D1E2231000A000ABC0E6 /* M800AssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28D1E1231000A000ABC0E6 /* M800AssignmentTests.swift */; };
 		BD28D1EF231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28D1EE231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift */; };
 		BD28D1F02310190600ABC0E6 /* ITunesSearchAPIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28D1EE231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift */; };
+		BD28D1F22310E0C900ABC0E6 /* MainViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD28D1F12310E0C900ABC0E6 /* MainViewControllerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		BD28D1E1231000A000ABC0E6 /* M800AssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M800AssignmentTests.swift; sourceTree = "<group>"; };
 		BD28D1E3231000A000ABC0E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD28D1EE231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesSearchAPIHelper.swift; sourceTree = "<group>"; };
+		BD28D1F12310E0C900ABC0E6 /* MainViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			children = (
 				BD28D1C92310009F00ABC0E6 /* AppDelegate.swift */,
 				BD28D1CB2310009F00ABC0E6 /* MainViewController.swift */,
+				BD28D1F12310E0C900ABC0E6 /* MainViewControllerManager.swift */,
 				BD28D1CD2310009F00ABC0E6 /* Main.storyboard */,
 				BD28D1D3231000A000ABC0E6 /* Assets.xcassets */,
 				BD28D1D5231000A000ABC0E6 /* LaunchScreen.storyboard */,
@@ -207,6 +210,7 @@
 				BD28D1CC2310009F00ABC0E6 /* MainViewController.swift in Sources */,
 				BD28D1D22310009F00ABC0E6 /* M800Assignment.xcdatamodeld in Sources */,
 				BD28D1EF231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift in Sources */,
+				BD28D1F22310E0C900ABC0E6 /* MainViewControllerManager.swift in Sources */,
 				BD28D1CA2310009F00ABC0E6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
