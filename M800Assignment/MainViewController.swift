@@ -66,11 +66,15 @@ extension MainViewController: UISearchBarDelegate {
     // MARK: Delegate implements
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        triggerSeach(searchBar)
-        unfocuseSearchBar(searchBar)
+        doSearch(searchBar)
     }
     
     // MARK: Task methods
+    
+    fileprivate func doSearch(_ searchBar: UISearchBar) {
+        triggerSeach(searchBar)
+        unfocuseSearchBar(searchBar)
+    }
     
     fileprivate func triggerSeach(_ searchBar: UISearchBar) {
         if let inputText = searchBar.text {
