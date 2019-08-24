@@ -7,17 +7,16 @@
 //
 
 import UIKit
-import MediaPlayer
 
 protocol MainViewControllerDelegate {
     var songs: [Song] {get set}
     func handleViewDidLoad()
     func doSearch(_ searchBar: UISearchBar)
+    func playPreviewTrack(_ indexPath: IndexPath)
 }
 
 class MainViewController: UIViewController {
 
-    var audioPlayer: AVPlayer?
     var delegate: MainViewControllerDelegate?
     
     @IBOutlet weak var musicSearchBar: UISearchBar! {
@@ -72,15 +71,18 @@ extension MainViewController: UITableViewDelegate {
         return cellWhichWasloadedArtworkImage(cell: cell, indexPath: indexPath)
     }
     
+//    fileprivate func playPreviewTrack(_ indexPath: IndexPath) {
+//        if let prviewURL = URL(string: self.delegate!.songs[indexPath.row].previewURLString) {
+//            let urlAsset = AVURLAsset(url: prviewURL)
+//            let playerItem = AVPlayerItem(asset: urlAsset)
+//            audioPlayer = AVPlayer(playerItem: playerItem)
+//            audioPlayer!.play()
+//        }
+//    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
-        if let prviewURL = URL(string: self.delegate!.songs[indexPath.row].previewURLString) {
-            let urlAsset = AVURLAsset(url: prviewURL)
-            let playerItem = AVPlayerItem(asset: urlAsset)
-            audioPlayer = AVPlayer(playerItem: playerItem)
-            audioPlayer!.play()
-        }
+        self.delegate!.playPreviewTrack(indexPath)
     }
     
     // MARK: Task methods

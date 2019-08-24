@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class MainViewControllerManager: NSObject, MainViewControllerDelegate {
     
     var songs: [Song] = [Song]()
     var musicTableView: UITableView
+    var audioPlayer: AVPlayer?
     
     public init(musicTableView tableView: UITableView) {
         self.musicTableView = tableView
@@ -24,6 +26,15 @@ class MainViewControllerManager: NSObject, MainViewControllerDelegate {
     func doSearch(_ searchBar: UISearchBar) {
         triggerSeach(searchBar)
         unfocuseSearchBar(searchBar)
+    }
+    
+    func playPreviewTrack(_ indexPath: IndexPath) {
+        if let prviewURL = URL(string: self.songs[indexPath.row].previewURLString) {
+            let urlAsset = AVURLAsset(url: prviewURL)
+            let playerItem = AVPlayerItem(asset: urlAsset)
+            audioPlayer = AVPlayer(playerItem: playerItem)
+            audioPlayer!.play()
+        }
     }
     
     private func triggerSeach(_ searchBar: UISearchBar) {
