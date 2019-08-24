@@ -43,6 +43,7 @@
 		BD28D1E3231000A000ABC0E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD28D1EE231013BF00ABC0E6 /* ITunesSearchAPIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesSearchAPIHelper.swift; sourceTree = "<group>"; };
 		BD28D1F12310E0C900ABC0E6 /* MainViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerManager.swift; sourceTree = "<group>"; };
+		BD28D1F72311637E00ABC0E6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +67,7 @@
 		BD28D1BD2310009F00ABC0E6 = {
 			isa = PBXGroup;
 			children = (
+				BD28D1F72311637E00ABC0E6 /* README.md */,
 				BD28D1C82310009F00ABC0E6 /* M800Assignment */,
 				BD28D1E0231000A000ABC0E6 /* M800AssignmentTests */,
 				BD28D1C72310009F00ABC0E6 /* Products */,
